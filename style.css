@@ -1,0 +1,31 @@
+body {
+    background: url('background.png');
+}
+#bluelagoon {
+    background: url('bluelagoon.png') no-repeat;
+    background-position: center center;
+    width: 603px;
+    height: 420px;
+    position: absolute;
+    left: 50%;
+    top: 50%; 
+    margin-left: -301px;
+    margin-top: -180px;
+}
+#ribbon {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+}
+button#startquiz {
+    background: #ffe55b;
+    color: #ff6a00;
+    border-radius: 25px;
+    padding: 10px 30px;
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    margin-left: -120px;
+    font-family: 'Fugaz One', cursive;
+    font-size: 30px;
+}
