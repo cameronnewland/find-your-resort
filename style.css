@@ -1,31 +1,140 @@
 body {
-    background: url('background.png');
+    background: url('images/background.png');
 }
 #bluelagoon {
-    background: url('bluelagoon.png') no-repeat;
+    background: url('images/bluelagoon400.png') no-repeat;
     background-position: center center;
-    width: 603px;
-    height: 361px;
+    width: 400px;
+    height: 312px;
     position: absolute;
     left: 50%;
     top: 50%; 
-    margin-left: -301px;
-    margin-top: -180px;
+    margin-left: -200px;
+    margin-top: -156px;
+    overflow: visible;
 }
-#ribbon {
-    position: absolute;
-    top:80px;
-    left: 0px;
+#title {
+    width: 700px;
+    position: relative;
+    top:-80px;
+    left:-120px;
+    font-family: 'Fugaz One', cursive;
+    font-size: 40px;
+    text-shadow:1px 2px 1px #8f7f24;
+    color: #f89306;
 }
 button#startquiz {
-    background: #ffe55b;
-    color: #ff6a00;
+    color: #fff;
     border-radius: 25px;
-    padding: 10px 30px;
+    -moz-border-radius:25px;
+    -webkit-border-radius:25px;
+    padding: 8px 20px 6px 20px;
     position: absolute;
-    top: 150px;
+    top: 120px;
     left: 50%;
     margin-left: -120px;
     font-family: 'Fugaz One', cursive;
     font-size: 30px;
+    text-shadow:0px 1px 0px #8f7f24;
+        
+        -moz-box-shadow:inset 0px 1px 5px 0px #ffe0b5;
+        -webkit-box-shadow:inset 0px 1px 5px 0px #ffe0b5;
+        box-shadow:inset 0px 1px 5px 0px #ffe0b5;
+        
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #fbb450), color-stop(1, #f89306));
+    background:-moz-linear-gradient(top, #fbb450 5%, #f89306 100%);
+    background:-webkit-linear-gradient(top, #fbb450 5%, #f89306 100%);
+    background:-o-linear-gradient(top, #fbb450 5%, #f89306 100%);
+    background:-ms-linear-gradient(top, #fbb450 5%, #f89306 100%);
+    background:linear-gradient(to bottom, #fbb450 5%, #f89306 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fbb450', endColorstr='#f89306',GradientType=0);
+    background-color:#fbb450;
+    border:1px solid #c97e1c;
+    display:inline-block;
+}
+button#startquiz:active {
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #f89306), color-stop(1, #fbb450));
+    background:-moz-linear-gradient(top, #f89306 5%, #fbb450 100%);
+    background:-webkit-linear-gradient(top, #f89306 5%, #fbb450 100%);
+    background:-o-linear-gradient(top, #f89306 5%, #fbb450 100%);
+    background:-ms-linear-gradient(top, #f89306 5%, #fbb450 100%);
+    background:linear-gradient(to bottom, #f89306 5%, #fbb450 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f89306', endColorstr='#fbb450',GradientType=0);    
+    background-color:#f89306;
+    cursor: pointer;
+}
+button#startquiz:hover {
+    cursor: pointer;
+}
+#quiz {
+    width: 600px;
+    position: absolute;
+    left: 50%;
+    top: 50%; 
+    margin-left: -350px;
+    margin-top: -180px;
+    display: none;
+}
+#question {
+    background: #fff;
+    width: 600px;
+    color: #ff6a00;
+    border-radius: 25px;
+    padding: 25px 50px;
+    font-family: 'EB Garamond', serif;
+    font-size: 24px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+#answers {
+    background: #fff;
+    width: 600px;
+    color: #ff6a00;
+    border-radius: 25px;
+    padding: 25px 50px;
+    text-align: center;
+    font-family: 'EB Garamond', serif;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+#answers ul li {
+    color: #ff6a00;
+    list-style: none;
+    display: inline;
+    margin-right: 10px;
+    text-align: center;
+    
+}
+#answers ul li:hover {
+    color: #000;
+    cursor: pointer;
+}
+#navigation {
+    background: #fff;
+    color: #ff6a00;
+    border-radius: 25px;
+    padding: 25px 50px;
+    text-align: center;
+    font-family: 'Fugaz One', cursive;
+    font-size: 16px;
+    width: auto;
+    float: right;
+}
+#navigation:hover {
+    background: #ffe0b5;
+    cursor: pointer;
+}
+#navigation a {
+    color: #ff6a00;
+}
+#navigation:hover a {
+    color: #000;
+}
+#dnclogo {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
+#mc_embed_signup {
+    background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif;
 }
