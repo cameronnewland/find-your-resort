@@ -86,6 +86,10 @@ button#startquiz:hover {
     margin-bottom: 10px;
     text-align: center;
 }
+ul {
+    -webkit-padding-start: 0px;
+    display: inline;
+}
 #answers {
     background: #fff;
     width: 600px;
@@ -94,16 +98,21 @@ button#startquiz:hover {
     padding: 25px 50px;
     text-align: center;
     font-family: 'EB Garamond', serif;
-    font-size: 18px;
     margin-bottom: 10px;
 }
 #answers ul li {
+    font-size: 18px;
     color: #ff6a00;
+    background: #ffe0b5;
+    border-radius: 10px;
+    padding: 5px;
     list-style: none;
     display: inline;
     margin-right: 10px;
-    text-align: center;
-    
+    text-align: center;    
+}
+#answers ul li:last-child {
+    margin-right: 0px;
 }
 #answers ul li:hover {
     color: #000;
