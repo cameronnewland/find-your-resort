@@ -10,7 +10,6 @@
         <link href='http://fonts.googleapis.com/css?family=EB+Garamond' rel='stylesheet' type='text/css'>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-        <script src="zepto.min.js"></script>
         <script src="app.js"></script>
     </head>
     <body>
@@ -20,10 +19,19 @@
         </figure>
         <section id="quiz">
             <section id="title">Australia Vacation Matchmaker</section>
-            <article id="question"></article>
-            <article id="answers"></article>
+            <section id="qacontainer">
+                <article id="question"></article>
+                <article id="answers"></article>
+                <article id="emailFormContainer">
+                        <form action="phpemailsubmit/post.php" method="post" id="emailPost">
+                            <input id="email" name="email" type="text" maxlength="255" placeholder="Enter email address" value="" />
+                            <input id="saveForm" class="btTxt" type="submit" value="Submit" />  
+                        </form> 
+                </article>
+            </section>
             <button id="navigation"><a style="text-align: right;" href="#"">NEXT</a></button>
+            <button id="restart"><a style="text-align: right;" href="#"">TRY AGAIN</a></button>
         </section>
-        <img id="dnclogo" src="images/dnclogo.gif">
+        <img id="dnclogo" src="images/dnclogo75.gif">
     </body>
 </html>

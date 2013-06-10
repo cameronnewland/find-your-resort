@@ -3,9 +3,35 @@ $(document).ready(function () {
         $('#bluelagoon').hide();
         startQuiz();
     });
+    $('#restart').click(function () {
+        appData['userAnswers'] = ['', '', '', '', '', '', 'EMAIL', 'ANSWER'];
+        questionCount = 0;
+        $('#restart').hide()
+        $('#navigation').show()
+        startQuiz();
+    });
     $('#navigation').click(function () {
         nextQuestion();
         insertResult();
+    });
+    /* attach a submit handler to the form */
+    $("#emailPost").submit(function (event) {
+
+        /* stop form from submitting normally */
+        event.preventDefault();
+
+        /* get some values from elements on the page: */
+        var $form = $(this),
+            term = $form.find('input[name="email"]').val(),
+            url = $form.attr('action');
+
+        /* Send the data using post */
+        var posting = $.post(url, { email: term });
+
+        /* Put the results in a div */
+        posting.done(function () {
+            postSuccess();
+        });
     });
 });
 // Data object
@@ -23,8 +49,7 @@ var appData = {
             '<ul><li style="float:left;"><a onclick="setAnswer(\'s\');"><img src="images/Snorkeling_1.jpg" style="height:165px;width:165px;"><br>Snorkeling</a></li><li style="float:left;"><a onclick="setAnswer(\'f\');"><img src="images/main.jpg" style="height:165px;width:165px;"><br>Fine Dining</a></li><li style="float:left;"><a onclick="setAnswer(\'o\');"><img src="images/Activity_4WD_or_Bushtculture_Tour_HIGH_Res.JPG" style="height:165px;width:165px;"><br>Touring the Outback</a></li><br style="clear:both"></ul>',
             '<ul><li style="float:left;"><a onclick="setAnswer(\'f\');"><img src="images/scuba_diving_with_big_fish.jpg" style="height:165px;width:165px;"><br>This amazing fish!</a></li><li style="float:left;"><a onclick="setAnswer(\'o\');"><img src="images/aerial_cockburn_range_El_Questro_Station.jpg" style="height:165px;width:165px;"><br>The Australian Outback</a></li><li style="float:left;"><a onclick="setAnswer(\'g\');"><img src="images/Reef_1_1.jpg" style="height:165px;width:165px;"><br>Great Barrier Reef</a></li><br style="clear:both"></ul>',
             '<ul><li style="float:left;"><a onclick="setAnswer(\'b\');"><img src="images/Hero_019_Heron_Sunset.jpg" style="height:165px;width:165px;"><br>Beach sunset</a></li><li style="float:left;"><a onclick="setAnswer(\'o\');"><img src="images/Under_a_desert_moon.jpg" style="height:165px;width:165px;"><br>Outdoors dining</a></li><li style="float:left;"><a onclick="setAnswer(\'l\');"><img src="images/sunset_4.jpg" style="height:165px;width:165px;"><br>Lake sunset</a></li><br style="clear:both"></ul>',
-            // '<link href="http://cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css"><div id="mc_embed_signup"><form action="http://attentionspan.us1.list-manage.com/subscribe/post?u=2d1c68690b0297a10ee19c2d0&amp;id=aeebe77275" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate><label for="mce-EMAIL">Subscribe to our mailing list</label><input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required><div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div></form></div>',
-            '',
+            '<div></div>',
             ''],
     'userAnswers': ['', '', '', '', '', '', 'EMAIL', 'ANSWER'],
     'destinations': [
@@ -61,32 +86,38 @@ var nextQuestion = function () {
     } else {
         alert('Please select an answer before going on to the next question.');
     }
-
-    // alert(appData['userAnswers'][questionCount-1]);
 }
 var setAnswer = function (answer) {
     appData['userAnswers'][questionCount] = answer;
 }
 var insertResult = function () {
+    if(questionCount === 6) {
+        $('#answers').hide();
+        $('#emailFormContainer').show();
+        $('#navigation').hide();
+    }
     if (questionCount === 7) {
         computeResult();
     }
 }
+var postSuccess = function() {
+        $('#emailFormContainer').hide();
+        $('#answers').show();
+        $('#restart').show();
+        nextQuestion();
+        insertResult();
+}
 var computeResult = function () {
     var userAnswerString = appData['userAnswers'].join("");
     userAnswerString = userAnswerString.slice(0, 6);
-    //  $('#answers').append("<br>" + userAnswerString);
-    // console.log(userAnswerString.slice(0,3));
     if (userAnswerString.slice(0, 2) === "ef") {
         $('#answers').html(appData['destinations'][6]);
     } else if (userAnswerString.slice(0, 3) === "ecg" || userAnswerString.slice(0, 3) === "ecp") {
         $('#answers').html(appData['destinations'][3]);
-    } else if (userAnswerString.slice(0, 3) === "eco") {
+    } else if (userAnswerString.slice(0, 3) === "eco" || userAnswerString.slice(0, 3) === "pco") {
         $('#answers').html(appData['destinations'][5]);
     } else if (userAnswerString.slice(0, 3) === "pcg" || userAnswerString.slice(0, 3) === "pcp") {
         $('#answers').html(appData['destinations'][0]);
-    } else if (userAnswerString.slice(0, 3) === "pco") {
-        $('#answers').html(appData['destinations'][5]);
     } else if (userAnswerString.slice(0, 3) === "afg" || userAnswerString.slice(0, 3) === "afp") {
         $('#answers').html(appData['destinations'][1]);
     } else if (userAnswerString.slice(0, 3) === "aco" || userAnswerString.slice(0, 3) === "afo") {
